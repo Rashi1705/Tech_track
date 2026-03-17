@@ -1,0 +1,26 @@
+# TODO List
+
+- [x] Change Select tag
+- [x] Create task page
+- [x] Redesign Home page
+- [x] Work on dashboard page
+- [x] Create my tasks page
+- [x] show analytics on project page
+- [x] Redeploy backend to some faster provider
+- [x] Profile page and profile avatar
+- [x] Create Readme file
+- [x] Make empty ui look beautiful
+- [x] Create Landing page
+- [ ] Add AI features??
+- [x] Create Profile icon and dropdown
+- [x] Calendar View
+- [x] Add dropdown to task table
+- [x] Make settings page work
+- [x] Make edit project page work
+- [x] Create Tasks from My Tasks page
+- [x] Edit task details
+- [ ] Fix mobile ui bugs
+- [x] Add a filter for selecting due date
+- [x] Instead of filter for toggling due date there should be arrows next to due date in the table header for doing this.
+- [x] Ability to delete tasks, project and organisations.
+- [x] Increase size of auth pages
