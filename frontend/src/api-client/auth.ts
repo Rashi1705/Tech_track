@@ -1,0 +1,71 @@
+import { LoginFormFields } from '@/features/auth/components/LoginForm';
+import { SignupFormFields } from '@/features/auth/components/SignupForm';
+
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
+
+export const registerUser = async function (userData: SignupFormFields) {
+  const res = await fetch(`${API_BASE_URL}/auth/signup`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    credentials: 'include',
+    body: JSON.stringify(userData),
+  });
+  const responseBody = await res.json();
+  if (!responseBody.success) throw new Error(responseBody.message);
+};
+
+export const loginUser = async function (userData: LoginFormFields) {
+  const res = await fetch(`${API_BASE_URL}/auth/login`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    credentials: 'include',
+    body: JSON.stringify(userData),
+  });
+  const responseBody = await res.json();
+  if (!responseBody.success) throw new Error(responseBody.message);
+};
+
+export const getCurrentUser = async function () {
+  const response = await fetch(`${API_BASE_URL}/auth/user`, {
+    method: 'GET',
+    credentials: 'include',
+  });
+  if (!response.ok) throw new Error('Unauthorized');
+  const responseBody = await response.json();
+  return responseBody.data;
+};
+
+export const logoutUser = async function () {
+  const response = await fetch(`${API_BASE_URL}/auth/logout`, {
+    credentials: 'include',
+  });
+  if (!response.ok) throw new Error('An error occured while logging out user.');
+};
+
+export const googleAuth = async function (code: string) {
+  const response = await fetch(`${API_BASE_URL}/auth/google`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    credentials: 'include',
+    body: JSON.stringify({ code }),
+  });
+  const responseBody = await response.json();
+  if (!responseBody.success) throw new Error(responseBody.message);
+};
+
+export const updateUser = async function (data: FormData) {
+  const response = await fetch(`${API_BASE_URL}/auth/user`, {
+    method: 'PUT',
+    credentials: 'include',
+    body: data,
+  });
+  const responseBody = await response.json();
+  if (!responseBody.success) throw new Error(responseBody.message);
+  return responseBody.data.user;
+};
